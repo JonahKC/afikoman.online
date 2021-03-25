@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Afikoman.online | Home</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+			<div class="main-page">
+        <h1 class="title center no-wrap">Afikoman: Online</h1>
+        <div class="center">
+            <p class="label">Game ID</p>
+            <input type="text" id="jgid" name="jgid" placeholder="123456"><br />
+            <p class="label">Username</p>
+            <input type="text" id="username" name="username" placeholder="Joe Bob"><br />
+            <br />
+            <br />
+            <form id="joingame" action="./lobby.html">
+                <button id="join" class="joingame button">Join Game</button>    
+            </form>
+            <br />
+            <button id="cgid" class="creategame">Create Game</button>
+            <h3 id="gameid"></h3>
+            <script src="/socket.io/socket.io.js"></script>
+            <script src="./jgid.js"></script>
+            <script src="./randomGame.js"></script>
+        </div>
+			</div>
+    </body>
+</html>
