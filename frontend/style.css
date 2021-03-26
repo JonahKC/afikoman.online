@@ -140,7 +140,7 @@ button {
     display: none;
 }
 .box {
- border: 3px solid rgb(20, 20, 20);
+ border: 4px solid rgb(20, 20, 20);
  width: 6in;
  margin: auto;
  border-radius: 0.3rem;
@@ -172,4 +172,9 @@ hr {
 }
 #player-only {
 	display: none;
+}
+.paddedtext {
+  padding-left:50px;
+  padding-right:50px;
+  padding-bottom: 25px;
 }

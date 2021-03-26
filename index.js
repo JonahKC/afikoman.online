@@ -13,15 +13,12 @@ function fancyDict(dict) {
 const frontent = path.join(__dirname, 'frontend');
 
 var players = [];
-var dataArray = [];
+var firstInRoom = {};
+var isHost;
 
 app.use(express.static(frontent));
 
 io.on('connection', (socket) => {
-	dataArray = [];
-	for(var i = 0; i < players.length; i++) {
-		dataArray.push(fancyDict(players[i]));
-	}
   socket.on('win', (username, room) => {
     for(var i = 0; i < players.length; i++) {
       if(players[i].room = room) {
@@ -30,13 +27,26 @@ io.on('connection', (socket) => {
 		}
     io.to(room).emit('win', username);
   });
-  socket.on('join', (usr, rm, _isOwner) => {
-		console.log(usr, rm, _isOwner);
+  socket.on('join', (usr, rm) => {
+		/*
+			firstInRoom = {
+				(roomnumber) "123456": {
+					firstPlayer: 0/1
+				}
+			}
+		*/
+		if(eval("firstInRoom." + rm + ".firstPlayer") == 0) {
+			eval("firstInRoom." + rm + ".firstPlayer") = 1
+			isHost = true;
+		} else {
+			isHost = false;
+		}
+		console.log(usr, rm);
     players += {
       username: usr,
       room: rm,
-			isOwner: _isOwner
     }
+		io.to(rm).emit('playerData', isHost);
   });
 });
 
