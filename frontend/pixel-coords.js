@@ -38,9 +38,9 @@ const coords = [
 		{
 		name: "bk_2_1",
 		x: 2048,
-		y: ,
-		width: ,
-		height: 
+		y: 1673,
+		width: 193,
+		height: 132
 	},
 		{
 		name: "bk_2_2",

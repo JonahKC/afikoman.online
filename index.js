@@ -31,15 +31,12 @@ io.on('connection', (socket) => {
     io.to(room).emit('win', username);
   });
   socket.on('join', (usr, rm, _isOwner) => {
+		console.log(usr, rm, _isOwner);
     players += {
       username: usr,
       room: rm,
 			isOwner: _isOwner
     }
-			console.log(`Playerdata array: ${dataArray}`)
-		console.log(usr, rm, _isOwner);
-    socket.join('room');
-    io.to('room').emit('updateplayers', players, rm)
   });
 });
 

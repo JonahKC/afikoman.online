@@ -110,7 +110,7 @@ button, input {
 button {
     background-color: rgb(223, 60, 54);
 }
-.creategame {
+.fancybutton {
     transition: background-color 0.4s;
     padding: 2.4rem 7rem;
     margin-bottom: 0.5rem;
@@ -119,33 +119,14 @@ button {
     text-decoration: none;
     border: 4px solid rgb(20, 20, 20);/*rgb(255, 255, 107);*/
 }
-.creategame:hover {
+.fancybutton:hover {
     transition: 0.4s;
     background-color: #9e0020; /*rgb(255, 255, 65);*/
 }
-.creategame:active {
+.fancybutton:active {
     transition: 0.4s;
     border: none;
     background-color: #9e0020;/*rgb(61, 223, 46);*/
-    outline:none;
-}
-.joingame {
-    transition: background-color 0.4s;
-    padding: 2.4rem 7rem;
-    margin-bottom: 0.5rem;
-    border-radius: 7px;
-    font-size: 1.5rem;
-    text-decoration: none;
-    border: 4px solid rgb(20, 20, 20);/*rgb(107, 196, 255);*/
-}
-.joingame:hover {
-    transition: 0.4s;
-    background-color: #9e0020;/*rgb(91, 190, 255);*/
-}
-.joingame:active {
-    transition: 0.4s;
-    border: none;
-    background-color: #9e0020;/*rgb(93, 46, 223);*/
     outline:none;
 }
 #game {
@@ -181,4 +162,14 @@ hr {
 		outline: none !important;
     color: transparent !important;
     pointer-events: none !important;
+    background-color: transparent !important;
+}
+.after-start {
+	display: none;
+}
+#host-only {
+	display: none;
+}
+#player-only {
+	display: none;
 }

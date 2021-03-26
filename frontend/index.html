@@ -13,7 +13,7 @@
 
 <body>
 	<div class="main-page">
-		<h1 class="title center no-wrap">Afikoman: Online</h1>
+		<h1 class="title center no-wrap"><img src="matzah-logo.png" width="50px" draggable=false> Afikoman: Online</h1>
 		<div class="center">
 			<p class="label">Game ID</p>
 			<input type="text" id="jgid" name="jgid" placeholder="183672">
@@ -23,10 +23,10 @@
             <br>
             <br>
             <form id="joingame" action="./game.html">
-                <button id="join" class="joingame button">Join Game</button>    
+                <button id="join" class="fancybutton button">Join Game</button>    
             </form>
             <br />
-            <button id="cgid" class="creategame">Create Game</button>
+            <button id="cgid" class="fancybutton">Create Game</button>
             <h3 id="gameid" class="smalltext"></h3>
             <script src="/socket.io/socket.io.js"></script>
             <script src="./jgid.js"></script>
@@ -35,7 +35,7 @@
         <br>
          <div class="box center">
             <h3 class="label center">How to Play:</h3>
-            <p class="smalltext">Click <i class="smalltext">Create Game</i> to generate a room code. Then insert your name and click <i class="smalltext">Join Game</i>. If you created the game and everyone is ready to start, click <i class="smalltext">Start</i>. The goal of the game is to find the Afikoman, wrapped in a green napkin. When you find it, click on it and you win!</p>
+            <p class="smalltext" style="text-align: left !important;">Click <i class="smalltext">Create Game</i> to generate a room code. Then insert your name and click <i class="smalltext">Join Game</i>. If you created the game and everyone is ready to start, click <i class="smalltext">Start</i>. The goal of the game is to find the Afikoman, wrapped in a green napkin. When you find it, click on it and you win! <br> There's 3 maps with four locations each, so you might get a repeat.</p>
            </div>
       </div>
   	<footer class="center">
@@ -43,9 +43,7 @@
     	<hr>
 			<!-- target="_blank makes it open in new tab -->
     	<p>Made by <a class="linelink" href="https://jcinc.jonahkc.com" target="_blank">jcinc.jonahkc.com</a>
-			<!-- Easter Egg --><p style="display: none;">We have Minecraft servers! Come 'n join (both are Bedrock)
-			Jonah SMP: <!--JONAH YOUR IP HERE-->
-			One_Lone_Turnips_Minecraft: Server Address: 104.209.40.168, and port: 19132</p>
+			<!-- Easter Egg --><p style="width: 1px; height: 1px; font-size: 0.1px;">Callum & Jonah were here</p>
     </footer>
     </body>
 
