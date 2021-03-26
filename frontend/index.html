@@ -1,33 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Afikoman.online | Home</title>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="./style.css">
-    </head>
-    <body>
-			<div class="main-page">
-        <h1 class="title center no-wrap">Afikoman: Online</h1>
-        <div class="center">
-            <p class="label">Game ID</p>
-            <input type="text" id="jgid" name="jgid" placeholder="123456"><br />
+
+<head>
+	<title>Afikoman.online | Home</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+	<div class="main-page">
+		<h1 class="title center no-wrap">Afikoman: Online</h1>
+		<div class="center">
+			<p class="label">Game ID</p>
+			<input type="text" id="jgid" name="jgid" placeholder="181818">
             <p class="label">Username</p>
-            <input type="text" id="username" name="username" placeholder="Joe Bob"><br />
-            <br />
-            <br />
-            <form id="joingame" action="./lobby.html">
+            <input type="text" id="username" name="username" placeholder="Elijah The Prophet"><br>
+            <br>
+            <br>
+            <form id="joingame" action="./game.html">
                 <button id="join" class="joingame button">Join Game</button>    
             </form>
             <br />
             <button id="cgid" class="creategame">Create Game</button>
-            <h3 id="gameid"></h3>
+            <h3 id="gameid" class="smalltext"></h3>
             <script src="/socket.io/socket.io.js"></script>
             <script src="./jgid.js"></script>
             <script src="./randomGame.js"></script>
         </div>
-			</div>
+        <br>
+         <div class="box center">
+            <h3 class="label center">How to Play:</h3>
+            <!-- HEY BOZO MAKE SURE THIS IS ACCURATE -->
+            <p class="smalltext">Click <i class="smalltext">Create Game</i> to generate a room code. Then insert your name and click <i class="smalltext">Join Game</i>. If you created the lobby and you are ready to start, click <i class="smalltext">Start</i>. Otherwise, just wait for the host to start. The goal of the game is to find the Afikoman, wrapped in a green napkin. When you find it, click on it and you win!</p>
+           </div>
+      </div>
+  	<footer class="center">
+    	<br>
+    	<hr>
+    	<p>Made by <a class="linelink" href="https://jcinc.jonahkc.com">jcinc.jonahkc.com</a>
+    </footer>
     </body>
+
 </html>

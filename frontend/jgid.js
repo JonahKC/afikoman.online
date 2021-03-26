@@ -2,8 +2,6 @@ var jgid = document.getElementById("jgid");
 var join = document.getElementById("join");
 var socket = io();
 room = 0;
-sessionStorage.setItem("room", "0");
-sessionStorage.setItem("username", ":)");
 
 //https://stackoverflow.com/questions/469357/html-text-input-allow-only-numeric-input
 function setInputFilter(textbox, inputFilter) {

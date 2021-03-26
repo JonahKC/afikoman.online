@@ -6,18 +6,22 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
+function fancyDict(dict) {
+	return "Player: " + dict.username + ", Room: " + dict.room;
+}
+
 const frontent = path.join(__dirname, 'frontend');
 
 var players = [];
+var dataArray = [];
 
 app.use(express.static(frontent));
 
-function fancyDict(dict) {
-	return `[Player: ${dict.username}, Room: ${dict.room}]`;
-}
-
 io.on('connection', (socket) => {
-	console.log(`Someone has connected! There are currently ${players.length} people playing.`)
+	dataArray = [];
+	for(var i = 0; i < players.length; i++) {
+		dataArray.push(fancyDict(players[i]));
+	}
   socket.on('win', (username, room) => {
     for(var i = 0; i < players.length; i++) {
       if(players[i].room = room) {
@@ -32,9 +36,10 @@ io.on('connection', (socket) => {
       room: rm,
 			isOwner: _isOwner
     }
+			console.log(`Playerdata array: ${dataArray}`)
+		console.log(usr, rm, _isOwner);
     socket.join('room');
     io.to('room').emit('updateplayers', players, rm)
-		console.log(players.toString())
   });
 });
 
