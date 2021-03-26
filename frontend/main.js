@@ -8,17 +8,23 @@ var bk = document.createElement("img");
 var matzah = document.createElement("button");
 matzah.style.display = "none";
 bk.style.display = "none"
-bk.id = "background";
-matzah.id = "matzah";
-document.getElementById("game").appendChild(bk);
-document.getElementById("game").appendChild(matzah);
-bk.src = `./images/bk_${randInt(1, 3)}_${randInt(0, 3)}.jpg`;
-bk.style.width = "4rem";
-bk.style.height = "4rem";
-matzah.style.display = "block";
-matzah.style.backgroundColor = "rgba(0, 0, 0, 0)";
-matzah.style.border = "none";
-bk.style.display = "block"
+
+const IMAGE_SCALE = [4032, 3024];
+
+window.onload = function(event) {
+	bk.id = "background";
+	matzah.id = "matzah";
+	matzah.setAttribute('class', "invisbutton");
+	document.getElementById("game").appendChild(bk);
+	document.getElementById("game").appendChild(matzah);
+	bk.src = `./images/bk_${randInt(1, 3)}_${randInt(0, 3)}.jpg`;
+	bk.draggable = false;
+	bk.style.textAlign = "center";
+	bk.width = IMAGE_SCALE[0] / 4;
+	bk.height = IMAGE_SCALE[1] / 4;
+	matzah.style.display = "block";
+	bk.style.display = "block"
+}
 socket.on('showgame', function() {
     matzah.style.display = "block";
     bk.style.display = "block"

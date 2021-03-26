@@ -17,7 +17,11 @@ button {
   width: 6in;
 }
 img {
-
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-o-user-select: none;
+user-select: none;
 }
 .footertext {
   font-size: .5rem;
@@ -144,6 +148,9 @@ button {
     background-color: #9e0020;/*rgb(93, 46, 223);*/
     outline:none;
 }
+#game {
+	text-align: center;
+}
 .label {
     font-size: 1.5rem;
     color: rgb(20, 20, 20);
@@ -168,6 +175,10 @@ hr {
 	width: 45%;
 	height: 50%;
 }
-.padthattext {
-  padding:25px;
+.invisbutton {
+    text-decoration: none !important;
+    border: none !important;
+		outline: none !important;
+    color: transparent !important;
+    pointer-events: none !important;
 }
