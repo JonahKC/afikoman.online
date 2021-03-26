@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Afikoman.online | Game</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1 id="win" class="center title">You're Not Suposed To See This</h1>
-    <div id="winBk" class="background"></div>
-    <h1 class="center title">Click on The Delicious Matzah First To Win</h1>
-    <div id="game"></div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="./main.js"></script>
+
+<head>
+	<title>Afikoman.online | Game</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+	<script src="./game-start.js"></script>
+	<!-- EVERYTHING AFTER HERE WILL NOT BE VISIBLE BEFORE THE HOST CLICKS START GAME -->
+	<h1 id="win" class="center title">You're Not Suposed To See This</h1>
+	<div id="winBk" class="background"></div>
+  <a href="/index.html" class="cornertitle no-wrap">Afikoman: Online</a>
+	<h3 class="center smalltext">Click on The Delicious Matzah First To Win!</h3>
+	<div id="game"></div>
+	<script src="/socket.io/socket.io.js">
+	</script>
+	<script src="./main.js">
+	</script>
+	<!-- added a footer ;) -->
+	<footer class="center">
+		<br>
+    	<hr>
+    	<p>Made by <a class="linelink" href="https://jcinc.jonahkc.com">jcinc.jonahkc.com</a>
+    </footer>
   </body>
 </html>
