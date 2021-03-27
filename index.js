@@ -17,6 +17,11 @@ var firstInRoom = {};
 var isHost;
 
 app.use(express.static(frontent));
+app.get("/game.html", async function(req, res) {
+    const gameid = req.query.gameid
+    const username = req.query.username
+    res.render("filename", {gameid: gameid, username: username})
+})
 
 io.on('connection', (socket) => {
   socket.on('win', (username, room) => {
@@ -35,12 +40,17 @@ io.on('connection', (socket) => {
 				}
 			}
 		*/
-		if(eval("firstInRoom." + rm + ".firstPlayer") == 0) {
-			eval("firstInRoom." + rm + ".firstPlayer") = 1
-			isHost = true;
+		if(!(rm.toString() in firstInRoom)) {
+			firstInRoom += {
+				rm: {
+					firstPlayer: 0
+				}
+			}
+			isHost = true
 		} else {
-			isHost = false;
+			isHost = false
 		}
+		console.log(isHost);
 		console.log(usr, rm);
     players += {
       username: usr,

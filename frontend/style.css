@@ -17,11 +17,11 @@ button {
   width: 6in;
 }
 img {
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--o-user-select: none;
-user-select: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
 }
 .footertext {
   font-size: .5rem;
@@ -57,7 +57,7 @@ user-select: none;
     margin: 0;
 }
 .smalltext {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgb(20, 20, 20);
 }
 .list {
