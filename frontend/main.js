@@ -82,14 +82,15 @@ socket.on('hostbkreceive', function(_bk) {
 	console.log('BACKGROUND (hostbkreceive): ' + _bk);
 	bk.src = _bk;
 	matzah.style.width =  (win_button_coords[_bk].width / 4) + 'px';
-	matzah.style.height = 'calc(' + (win_button_coords[_bk].height / 4) + 'px + 25rem)';
+	matzah.style.height = (win_button_coords[_bk].height / 4) + 'px';
 	matzah.style.left =  (win_button_coords[_bk].x / 4) + 'px';
-	matzah.style.top = (win_button_coords[_bk].y / 4) + 'px';
+	matzah.style.top = 'calc(' + (win_button_coords[_bk].y / 4) + 'px + ' + '25rem)';
 	matzah.style.display = 'block';
 });
 
 socket.on('wingame', function(username) {
   document.getElementById("win").innerText = username + " has won!";
   document.getElementById("win").style.display = "block";
+	document.getElementById("returnHome").style.display = "block";
   document.getElementById("winBk").style.display = "block";
 });
