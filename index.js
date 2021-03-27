@@ -19,6 +19,9 @@ app.use(express.static(frontent));
 //})
 
 io.on('connection', (socket, room) => {
+	socket.on('disconnect', function() {
+		socket.leave(io.sockets.adapter.sids[socket.id]);
+	});
 	socket.on('showgame', (rm) => {
 		io.to(rm).emit('showgame');
 	})
@@ -28,12 +31,7 @@ io.on('connection', (socket, room) => {
 		io.to(rm).emit('hostbkreceive', bk); // send host bk to all clients
 	});
   socket.on('win', (username, room) => {
-    for(var i = 0; i < players.length; i++) {
-      if(players[i].room = room) {
-				players.splice(i, 1)
-      }
-		}
-    io.to(room).emit('win', username);
+    io.to(room).emit('wingame', username);
   });
   socket.on('join', (usr, rm) => {
 		if(rm in firstInRoom === false) {

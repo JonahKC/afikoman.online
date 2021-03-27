@@ -160,7 +160,7 @@ hr {
     border: none !important;
 		outline: none !important;
     color: transparent !important;
-    pointer-events: none !important;
+    //pointer-events: none !important;
     background-color: transparent !important;
 }
 .after-start {
@@ -197,5 +197,4 @@ hr {
   padding-left:10%;
   padding-right:10%;
   padding-bottom: 25px;
-}
 }

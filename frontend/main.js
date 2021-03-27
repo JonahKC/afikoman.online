@@ -20,6 +20,11 @@ bk.style.display = "none"
 
 const IMAGE_SCALE = [4032, 3024];
 
+bk.id = "background";
+matzah.id = "matzah";
+matzah.style.zIndex = 1000;
+matzah.outline = 'none';
+
 window.onload = function(e) {
 	socket.on('showgame', function()
 	{
@@ -28,10 +33,8 @@ window.onload = function(e) {
 		document.getElementById('after-start').style.display = 'block';
 		document.getElementById('game').style.display = 'block';
     matzah.style.display = "block";
-		matzah.style.width = win_button_coords[bk.src].width;
-		matzah.style.height = win_button_coords[bk.src].height;
+		bk.style.display = "block"
 		matzah.style.position = 'absolute';
-    bk.style.display = "block"
 	});
 	socket.emit('join', sessionStorage.getItem('username'), sessionStorage.getItem("jgid"));
 	document.getElementById("game").appendChild(bk);
@@ -41,18 +44,24 @@ window.onload = function(e) {
 		socket.emit('showgame', sessionStorage.getItem('jgid'));
 		document.getElementById('host-only').remove();
 	}
+	matzah.onclick = function() {
+		console.log("Someone has won!");
+		socket.emit('win', sessionStorage.getItem("username"), sessionStorage.getItem("jgid"));
+	}
 }
-bk.id = "background";
-matzah.id = "matzah";
 matzah.setAttribute('class', "invisbutton");
 
-matzah.style.position = 'absolute';
+matzah.style.position = 'fixed';
 matzah.style.textAlign = 'center';
 bk.draggable = false;
 bk.style.textAlign = 'center';
-bk.style.position = "absolute";
+bk.style.position = "fixed";
+bk.style.top = '25rem';
+bk.style.left = 0;
+bk.style.zIndex = -5;
 bk.width = IMAGE_SCALE[0] / 4;
 bk.height = IMAGE_SCALE[1] / 4;
+console.log(bk.width)
 matzah.style.display = "block";
 bk.style.display = "block"
 
@@ -72,19 +81,15 @@ socket.on('playerData', function(_isOwner, id) {
 socket.on('hostbkreceive', function(_bk) {
 	console.log('BACKGROUND (hostbkreceive): ' + _bk);
 	bk.src = _bk;
-	console.log(isOwner ? "I AM OWNER" : "I AM NOT OWNER");
-	console.log('BACKGROUND SOURCE: ' + bk.src)
+	matzah.style.width =  (win_button_coords[_bk].width / 4) + 'px';
+	matzah.style.height = 'calc(' + (win_button_coords[_bk].height / 4) + 'px + 25rem)';
+	matzah.style.left =  (win_button_coords[_bk].x / 4) + 'px';
+	matzah.style.top = (win_button_coords[_bk].y / 4) + 'px';
 	matzah.style.display = 'block';
 });
 
-socket.on('win', function(username, winRoom) {
-    if(sessionStorage.getItem("room") == winRoom) {
-        document.getElementById("win").innerText = username + " has won!";
-        document.getElementById("win").style.display = "block";
-        document.getElementById("winBk").style.display = "block";
-    }
+socket.on('wingame', function(username) {
+  document.getElementById("win").innerText = username + " has won!";
+  document.getElementById("win").style.display = "block";
+  document.getElementById("winBk").style.display = "block";
 });
-matzah.onclick = function() {
-		console.log("Matzah clicked");
-    socket.emit('win', sessionStorage.getItem("username"), sessionStorage.getItem("room"));
-}
