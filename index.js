@@ -21,6 +21,7 @@ app.use(express.static(frontent));
 
 io.on('connection', (socket, room) => {
 	socket.on('hostbk', (bk) => {
+		console.log(bk);
 		io.to(room).emit('hostbkreceive', bk);
 	});
   socket.on('win', (username, room) => {
@@ -32,6 +33,7 @@ io.on('connection', (socket, room) => {
     io.to(room).emit('win', username);
   });
   socket.on('join', (usr, rm) => {
+
 		/*
 			firstInRoom = {
 				(roomnumber) "123456": {
@@ -47,10 +49,12 @@ io.on('connection', (socket, room) => {
 		}
 		console.log(isHost);
 		console.log(usr, rm);
+		socket.join(rm);
     //players += {
     //  username: usr,
     //  room: rm,
     //}
+		io.to(rm).emit('plz-do-something');
 		io.to(rm).emit('playerData', isHost);
   });
 });

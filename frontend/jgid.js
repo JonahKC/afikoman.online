@@ -29,6 +29,9 @@ setInputFilter(jgid, function(value) {
   document.getElementById("username").addEventListener(event, function() {
     sessionStorage.setItem("username", this.value);
   })
+	document.getElementById("jgid").addEventListener(event, function() {
+    sessionStorage.setItem("jgid", this.value);
+  })
 });
 
 /*document.getElementById("joingame").onsubmit = function() {
