@@ -21,7 +21,7 @@ app.use(express.static(frontent));
 
 io.on('connection', (socket, room) => {
 	socket.on('hostbk', (bk) => {
-		io.to(room).emit(bk);
+		io.to(room).emit('hostbkreceive', bk);
 	});
   socket.on('win', (username, room) => {
     for(var i = 0; i < players.length; i++) {

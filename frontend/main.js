@@ -4,8 +4,11 @@ function randInt(min, max) {
 }
 
 var socket = io();
+var ownerBk;
+
 var bk = document.createElement("img");
 var matzah = document.createElement("button");
+
 matzah.style.display = "none";
 bk.style.display = "none"
 
@@ -17,7 +20,13 @@ window.onload = function(event) {
 	matzah.setAttribute('class', "invisbutton");
 	document.getElementById("game").appendChild(bk);
 	document.getElementById("game").appendChild(matzah);
-	bk.src = `./images/bk_${randInt(1, 3)}_${randInt(0, 3)}.jpg`;
+	socket.on('playerData', function(isOwner) {
+  	if(isOwner) {
+			ownerBk = `./images/bk_${randInt(1, 3)}_${randInt(0, 3)}.jpg`;
+			socket.emit('hostBk', ownerBk);
+		}
+	});
+	socket.on('')
 	bk.draggable = false;
 	bk.style.textAlign = "center";
 	bk.width = IMAGE_SCALE[0] / 4;
