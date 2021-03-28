@@ -11,16 +11,20 @@ const frontent = path.join(__dirname, 'frontend');
 var firstInRoom = {};
 var isHost;
 
+function deleteByKey(dictionary, key) {
+   if(key in dictionary === true) {
+      delete dictionary[key];
+      return true;
+   }
+   return false;
+}
+
 app.use(express.static(frontent));
-//app.get("/game.html", async function(req, res) {
-//    const gameid = req.query.gameid
-//    const username = req.query.username
-//    res.render("filename", {jgid: jgid, username: username})
-//})
 
 io.on('connection', (socket, room) => {
-	socket.on('disconnect', function() {
-		console.log(`Attempting to disband room ${io.sockets.adapter.sids[socket.id]}`)
+	socket.on('leaveroom', function(username, room) {
+		console.log(`${username} is attempting to leave room ${room}`)
+		deleteByKey(firstInRoom, room);
 		socket.leave(io.sockets.adapter.sids[socket.id]);
 	});
 	socket.on('showgame', (rm) => {
@@ -29,14 +33,14 @@ io.on('connection', (socket, room) => {
 	socket.on('hostbk', (bk, rm) => {
 		console.log("BACKGROUND: " + bk);
 		console.log("ROOM (SERVER): " + rm)
-		io.to(rm).emit('hostbkreceive', bk); // send host bk to all clients
+		io.to(rm).emit('hostbkreceive', bk);
 	});
   socket.on('win', (username, room) => {
     io.to(room).emit('wingame', username);
   });
   socket.on('join', (usr, rm) => {
 		if(rm in firstInRoom === false) {
-			firstInRoom[rm] += {firstPlayer: 0}
+			firstInRoom[rm] += {firstPlayer: 1}
 			isHost = true
 		} else {
 			isHost = false
@@ -45,10 +49,6 @@ io.on('connection', (socket, room) => {
 		console.log(usr);
 		console.log("ROOM: " + rm);
 		socket.join(rm);
-    //players += {
-    //  username: usr,
-    //  room: rm,
-    //}
 		io.to(rm).emit('playerData', isHost, socket.id);
   });
 });

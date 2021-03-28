@@ -93,6 +93,10 @@ socket.on('hostbkreceive', function(_bk) {
 	matzah.style.display = 'block';
 });
 
+returnHome.onclick = function() {
+	socket.emit('leaveroom', sessionStorage.getItem('username'), sessionStorage.getItem('jgid'));
+}
+
 socket.on('wingame', function(username) {
   document.getElementById("win").innerText = username + " has won!";
   document.getElementById("win").style.display = "block";
