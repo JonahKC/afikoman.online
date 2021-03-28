@@ -6,11 +6,6 @@ function randInt(min, max) {
 var socket = io();
 var ownerBk;
 var isOwner;
-//sessionStorage
-
-socket.on('playerData', function(isOwner) {
-  console.log("OWNER: " + isOwner);
-});
 
 var bk = document.createElement("img");
 var matzah = document.createElement("button");
@@ -32,7 +27,6 @@ window.onload = function(e) {
 		document.querySelectorAll('.delete-me').forEach(element => {
 			element.remove();
 		})
-		console.log("Showgame");
 		document.getElementById('after-start').style.display = 'block';
 		document.getElementById('game').style.display = 'block';
     matzah.style.display = "block";
@@ -48,7 +42,6 @@ window.onload = function(e) {
 		document.getElementById('host-only').remove();
 	}
 	matzah.onclick = function() {
-		console.log("Someone has won!");
 		socket.emit('win', sessionStorage.getItem("username"), sessionStorage.getItem("jgid"));
 	}
 }
@@ -75,7 +68,6 @@ socket.on('playerData', function(_isOwner, id) {
 		isOwner = _isOwner;
 		if(_isOwner) {
 			ownerBk = `./images/bk_${randInt(1, 3)}_${randInt(0, 3)}.jpg`;
-			console.log("BACKGROUND (playerData): " + ownerBk);
 			document.getElementById('host-only').style.display = 'block';
 			//socket.emit('hostbk', ownerBk, sessionStorage.getItem('jgid'));
 		} else {
@@ -84,7 +76,6 @@ socket.on('playerData', function(_isOwner, id) {
 	}
 });
 socket.on('hostbkreceive', function(_bk) {
-	console.log('BACKGROUND (hostbkreceive): ' + _bk);
 	bk.src = _bk;
 	matzah.style.width =  (win_button_coords[_bk].width / 4) + 'px';
 	matzah.style.height = (win_button_coords[_bk].height / 4) + 'px';
