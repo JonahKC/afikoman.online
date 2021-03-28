@@ -5,7 +5,7 @@ function randInt(min, max) {
 
 var socket = io();
 var ownerBk;
-var isOwner
+var isOwner;
 //sessionStorage
 
 socket.on('playerData', function(isOwner) {
@@ -58,9 +58,10 @@ matzah.style.position = 'fixed';
 matzah.style.textAlign = 'center';
 bk.draggable = false;
 bk.style.textAlign = 'center';
+bk.style.margin = '0 auto';
 bk.style.position = "fixed";
 bk.style.top = 0;
-bk.style.left = 0;
+bk.style.left = '30%';
 bk.style.bottom = 0
 bk.style.zIndex = 100;
 bk.width = IMAGE_SCALE[0] / 4;
@@ -87,8 +88,8 @@ socket.on('hostbkreceive', function(_bk) {
 	bk.src = _bk;
 	matzah.style.width =  (win_button_coords[_bk].width / 4) + 'px';
 	matzah.style.height = (win_button_coords[_bk].height / 4) + 'px';
-	matzah.style.left =  (win_button_coords[_bk].x / 4) + 'px';
-	matzah.style.top = 'calc(' + (win_button_coords[_bk].y / 4) + 'px + ' + '25rem)';
+	matzah.style.left =  'calc(' + (win_button_coords[_bk].x / 4) + 'px + 30%)';
+	matzah.style.top = (win_button_coords[_bk].y / 4) + 'px';
 	matzah.style.display = 'block';
 });
 

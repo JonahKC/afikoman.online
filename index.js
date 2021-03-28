@@ -20,6 +20,7 @@ app.use(express.static(frontent));
 
 io.on('connection', (socket, room) => {
 	socket.on('disconnect', function() {
+		console.log(`Attempting to disband room ${io.sockets.adapter.sids[socket.id]}`)
 		socket.leave(io.sockets.adapter.sids[socket.id]);
 	});
 	socket.on('showgame', (rm) => {
