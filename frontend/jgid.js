@@ -37,10 +37,10 @@ setInputFilter(jgid, function(value) {
   document.getElementById("username").addEventListener(event, function() {
     sessionStorage.setItem("username", this.value);
   })
-	document.getElementById("jgid").addEventListener(event, function() {
-    sessionStorage.setItem("jgid", this.value);
-  })
 });
+setInterval(function() {
+	sessionStorage.setItem("jgid", document.getElementById("jgid").value);
+}, 100);
 
 /*document.getElementById("joingame").onsubmit = function() {
   socket.emit('join', sessionStorage.getItem("username"), sessionStorage.getItem("room"))

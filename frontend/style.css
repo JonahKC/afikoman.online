@@ -88,6 +88,15 @@ img {
 	width: 100%;
   color: rgb(236, 236, 233);
   display: none;
+  z-index: 1001;
+}
+#playAgain {
+	position: absolute;
+	font-size: 2.5rem;
+	top: 30rem;
+	width: 100%;
+  color: rgb(236, 236, 233);
+  display: none;
   z-index: 1002;
 }
 #winBk {

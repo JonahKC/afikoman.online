@@ -22,12 +22,17 @@ function deleteByKey(dictionary, key) {
 app.use(express.static(frontent));
 
 io.on('connection', (socket, room) => {
-	socket.on('leaveroom', function(username, room) {
+	socket.on('leaveroom', (username, room) => {
 		console.log("---------------------------");
 		console.log(`${username} is attempting to leave room ${room}`)
 		deleteByKey(firstInRoom, room);
 		socket.leave(io.sockets.adapter.sids[socket.id]);
 	});
+	socket.on('resetroom', (username, room) => {
+		console.log("---------------------------");
+		console.log(`${username} is attempting to play again in room ${room}`)
+		deleteByKey(firstInRoom, room);
+	})
 	socket.on('showgame', (rm) => {
 		io.to(rm).emit('showgame');
 	})

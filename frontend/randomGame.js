@@ -6,6 +6,5 @@ document.getElementById("cgid").onclick = function() {
     id = randomInt(100000, 999999);
     document.getElementById("gameid").innerText = "ID: " + id;
     document.getElementById("jgid").value = id
-		sessionStorage.setItem("jgid", id);
     room = id;
 }
