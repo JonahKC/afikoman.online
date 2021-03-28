@@ -100,6 +100,9 @@ returnHome.onclick = function() {
 socket.on('wingame', function(username) {
   document.getElementById("win").innerText = username + " has won!";
   document.getElementById("win").style.display = "block";
+	matzah.style.display = 'none';
+	sessionStorage.removeItem('jgid');
+	sessionStorage.removeItem('username');
 	document.getElementById("returnHome").style.display = "block";
   document.getElementById("winBk").style.display = "block";
 });

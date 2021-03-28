@@ -24,8 +24,9 @@ function setInputFilter(textbox, inputFilter) {
         } else {
           this.value = "";
         }
-        room = jgid.value;
-        sessionStorage.setItem("room", room);
+        //room = jgid.value;
+        //sessionStorage.setItem("room", room);
+				//console.log(room)
       });
     });
 }
