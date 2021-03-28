@@ -31,7 +31,7 @@ function setInputFilter(textbox, inputFilter) {
     });
 }
 setInputFilter(jgid, function(value) {
-  return /^\d*?\d*$/.test(value);
+  return /^(\d*?\d*)$/.test(value);
 });
 ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
   document.getElementById("username").addEventListener(event, function() {

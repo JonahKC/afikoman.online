@@ -84,22 +84,27 @@ socket.on('hostbkreceive', function(_bk) {
 	matzah.style.display = 'block';
 });
 
+socket.on('refresh', function() {
+	console.log("Host reloaded")
+	setTimeout(() => {location.reload()}, 500);
+});
+
 document.getElementById("returnHome").onclick = function() {
 	socket.emit('leaveroom', sessionStorage.getItem('username'), sessionStorage.getItem('jgid'));
 	sessionStorage.removeItem('jgid');
 	sessionStorage.removeItem('username');
 }
 
-document.getElementById("playAgain").onclick = function() {
+document.getElementById("playAgain").onclick = function() { 
+	location.reload();
 	socket.emit('resetroom', sessionStorage.getItem('username'), sessionStorage.getItem('jgid'), isOwner);
 }
-
 
 socket.on('wingame', function(username) {
   document.getElementById("win").innerText = username + " has won!";
   document.getElementById("win").style.display = "block";
 	matzah.style.display = 'none';
 	document.getElementById("returnHome").style.display = "block";
-	document.getElementById("playAgain").style.display = "block";
+	if(isOwner) {document.getElementById("playAgain").style.display = "block"}
   document.getElementById("winBk").style.display = "block";
 });

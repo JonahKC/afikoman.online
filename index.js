@@ -31,6 +31,7 @@ io.on('connection', (socket, room) => {
 	socket.on('resetroom', (username, room, isOwner) => {
 		console.log("---------------------------");
 		console.log(`${username} is attempting to play again in room ${room}`)
+		io.to(room).emit('refresh');
 		if(isOwner) {
 			deleteByKey(firstInRoom, room);
 		}
