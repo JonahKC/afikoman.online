@@ -220,3 +220,6 @@ hr {
   white-space: nowrap;
   overflow: hidden;
 }
+.smallertext {
+  font-size: 1.1rem !important;
+}
